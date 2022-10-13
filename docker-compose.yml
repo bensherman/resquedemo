@@ -3,9 +3,16 @@ services:
   main:
     build: .
     image: mainimage
-    depends_on:
-    - redis
   redis:
     image: redis:alpine
     ports: ["6379:6379"]
+  workers:
+    image: mainimage
+    environment:
+      - COUNT
+      - QUEUE
+    command: rake resque:workers
+  jobs:
+    image: mainimage
+    command: rake add_jobs
 

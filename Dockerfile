@@ -5,5 +5,3 @@ WORKDIR /app
 ADD . /app
 
 RUN bundle install --local
-
-ENTRYPOINT [ "ruby", "main.rb" ]
