@@ -15,16 +15,19 @@ class Nap
   @queue = :sleepy
 
   def self.perform(seconds)
-    puts "Nap: Sleeping for #{seconds} seconds: "
+    Signal.trap("QUIT") { puts "Nap: I've been woken up!" }
+    puts "#{Process.pid} Nap: Sleeping for #{seconds} seconds: "
     sleep seconds
+    puts "#{Process.pid} Nap: Done sleeping."
+
   end
 end
 
-def add_jobs(n=10)
-  puts "adding #{n} jobs"
-  # start 10 random length jobs
-  sleepers = 10
-  sleepers.times do
-    Bedtime.new.sleep(rand(10))
-  end
+def add_jobs()
+  Bedtime.new.sleep(60)
+  Bedtime.new.sleep(60)
+  Bedtime.new.sleep(30)
+  Bedtime.new.sleep(30)
+  Bedtime.new.sleep(10)
+  Bedtime.new.sleep(10)
 end

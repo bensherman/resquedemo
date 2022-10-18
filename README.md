@@ -3,7 +3,7 @@
 Open up 3 terminal windows.
 
 1. `docker compose build && docker compose up redis`
-2. `docker compose up workers`
+2. `COUNT=10 QUEUE=sleepy docker compose up workers`
 3. `docker compose up jobs`
 
 In window 1, we'll see redis running.
